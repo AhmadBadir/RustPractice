@@ -1,3 +1,18 @@
+pub use crate::front_of_house::hosting;
+
+//nested use
+///use std::cmp::Ordering;
+///use std::io;
+//this above two lines become
+use std::{io, cmp::Ordering};
+//using self in nested use
+//use std::io;
+//use std::io::Write
+//becomes
+use std::io::{Write};
+
+use std::collections::*;
+
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
@@ -35,6 +50,14 @@ mod back_of_house {
         }
     fn cook_order() {}
     }
+
+mod customer {
+    pub fn eat_at_restaurant() {
+        //uncomment this would not compile
+        //hosting::add_to_waitlist();
+        }
+    }
+
 pub fn eat_at_restaurant() {
     //Absolute path
     //crate::front_of_house::hosting::add_to_waitlist();
@@ -54,6 +77,9 @@ pub fn eat_at_restaurant() {
 
     let order1 = back_of_house::Appetizer::Soup;
     let order2 = back_of_house::Appetizer::Salad;
+
+//usage of use
+    hosting::add_to_waitlist();
 
 
     }
