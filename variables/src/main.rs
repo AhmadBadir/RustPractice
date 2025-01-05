@@ -314,25 +314,56 @@ fn main() {
 //
 // let sqr = Rectangle::square(50);
 // println!("square width and height are {}", sqr.width);
-let ip_four = IpAddrKind::V4(127, 0, 0, 1);
-let ip_six = IpAddrKind::V6(String::from("::1"));
+// let ip_four = IpAddrKind::V4(127, 0, 0, 1);
+// let ip_six = IpAddrKind::V6(String::from("::1"));
+//
+// let m = Message::Write(String::from("test"));
+//
+// m.call();
+//
+// let some_number = Some(5);
+// let some_char = Some('e');
+//
+// let absent_number : Option<i32> = None;
+//
+// let x: i8 = 5;
+// let y: Option<i8> = Some(5);
+//
+// let sum = x + y;
 
-let m = Message::Write(String::from("test"));
-
-m.call();
-
-let some_number = Some(5);
-let some_char = Some('e');
-
-let absent_number : Option<i32> = None;
-
-let x: i8 = 5;
-let y: Option<i8> = Some(5);
-
-let sum = x + y;
-
+let config_max : Option<u8> = None;
+if let Some(max) = config_max {
+    println!("The maximum is configured to be {max}");
+    }
 }
 
+
+
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+    }
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+    }
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => {
+            println!("Lucky penny!");
+            1
+            }
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("State quarter from {state:?}!");
+            25
+            }
+        }
+    }
 //options
 // enum Option<T> {
 //     None,
