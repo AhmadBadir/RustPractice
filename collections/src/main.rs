@@ -28,9 +28,38 @@ fn main() {
     //this way it will compile as it returns an Option
     let does_not_exists = v.get(100);
 
-    //adding element to a vector while holding a reference
+    //adding element to a vector while holding a reference, the below code won't compile as we borrow
     let mut v = vec![1,2,3,4,5];
-    let element = &v[1];
-    v.push(7);
-     println!("The first element is: {element}");
+  //  let element = &v[1];
+   // v.push(7);
+    // println!("The first element is: {element}");
+
+     //iterate over vector
+     let mut v = vec![100,32,5,100];
+
+     for i in &mut v {
+         println!{"element i in v is {i}"};
+         *i += 50;
+         println!{"element i in v is {i}"};
+         }
+     for i in &mut v {
+              println!{"element i in v is {i}"};
+              }
+
+     //enum vector
+     enum SpeardsheetCell {
+         Int(i32),
+         Float(f64),
+         Text(String),
+         }
+
+     let row = vec![SpeardsheetCell::Int(3),
+     SpeardsheetCell::Text(String::from("blue")),
+     SpeardsheetCell::Float(10.12),
+     ];
+    {
+     //drop element in vector
+     let v = vec![1,2,3,4,5];
+     //do sstuff with v
+     } // <- v goes out of scope and is freed here
 }
