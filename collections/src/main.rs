@@ -62,4 +62,47 @@ fn main() {
      let v = vec![1,2,3,4,5];
      //do sstuff with v
      } // <- v goes out of scope and is freed here
+
+     //Strings!!
+     let mut s = String::new();
+
+// create a String from string literal
+     let data = "initial contents";
+     let s = data.to_string();
+
+     //the method also works on a literal directly
+     let s = "initial contents".to_string();
+
+     //creating String from string literal using from
+     let s = String::from("initial contents");
+
+     //string is UTF-8, so all the below are valid strings
+         let hello = String::from("السلام عليكم");
+         let hello = String::from("Dobrý den");
+         let hello = String::from("Hello");
+         let hello = String::from("שלום");
+         let hello = String::from("नमस्ते");
+         let hello = String::from("こんにちは");
+         let hello = String::from("안녕하세요");
+         let hello = String::from("你好");
+         let hello = String::from("Olá");
+         let hello = String::from("Здравствуйте");
+         let hello = String::from("Hola");
+
+     //Updating strong
+     let mut s = String::from("foo");
+     s.push_str("bar");
+     println!("S string after push is {s}");
+
+     //push_str takes a referebce, so ownership is preserved
+     let mut s1 = String::from("foo");
+     let s2 = "bar";
+     s1.push_str(s2);
+     println!("S1 string after push is {s1}, s2 is {s2}");
+
+     //push char
+     let mut s = String::from("lo");
+     s.push('s');
+     println!("S string after push is {s}");
+
 }
