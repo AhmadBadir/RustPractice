@@ -105,4 +105,43 @@ fn main() {
      s.push('s');
      println!("S string after push is {s}");
 
+    // concatinate using plus operator
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; //s1 ownership is moved here and cannot be used anymore!
+    //println!("S1 string is {s1}"); // code won't compile if you uncomment this
+    println!("S2 string is {s2}");
+    println!("S3 string is {s3}");
+
+    //concatinate multiple strings
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    let s = s1 + "-" + &s2 + "-" + &s3;
+    println!("S string is {s}");
+
+    //concatinate using format! macro
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    let s = format!("{s1}-{s2}-{s3}");
+    println!("S1 string is {s1}"); // notice format! macro does not take ownership, so this code will compile
+    println!("S2 string is {s2}");
+    println!("S3 string is {s3}");
+    println!("S string using format! macro is {s}");
+
+    //indexing into Strings
+    let s1 = String::from("hello");
+    //let h = s1[0]; // won't compile with this code
+
+    let hello = String::from("Здравствуйте");
+    //let first_char = &hello[0];
+    //println!("first_char string is {first_char}"); // wont compile
+
+
+
 }
+// signature for + operator is
+// fn add(self, s: &str) -> String {
