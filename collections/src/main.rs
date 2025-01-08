@@ -139,6 +139,17 @@ fn main() {
     let hello = String::from("Здравствуйте");
     //let first_char = &hello[0];
     //println!("first_char string is {first_char}"); // wont compile
+    let s = &hello[0..4]; //if we put  let s = &hello[0..1] - code will panic
+    println!("S string is {s}");
+
+    //print chars
+    for c in hello.chars() {
+        println!("char is {c}");
+        }
+    //print bytes
+     for c in hello.bytes() {
+         println!(byte is {c}");
+         }
 
 
 
