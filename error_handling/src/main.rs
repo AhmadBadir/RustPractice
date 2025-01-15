@@ -73,3 +73,11 @@ fn read_username_from_file() -> Result<String, io::Error> {
         Err(e) => Err(e),
         }
     }
+
+//propagating shortcut
+fn read_user_from_file_file_shortcut -> Result<String, io::Error> {
+    let mut username_file = File::open("hello.txt")?;
+    let mut user = String::new();
+    username_file.read_to_string(&mut username)?;
+    Ok(username);
+    }
