@@ -81,3 +81,14 @@ fn read_user_from_file_file_shortcut -> Result<String, io::Error> {
     username_file.read_to_string(&mut username)?;
     Ok(username);
     }
+//propagating shortcut- shorter version
+fn read_user_from_file_file_shortcut_shorter -> Result<String, io::Error> {
+    let mut username = String::new();
+    File::open("hello.txt")?.read_to_string(&mut username)?;
+    Ok(username);
+    }
+
+//propagating shortcut- even shorter version
+fn read_user_from_file_file_shortcut_even_shorter -> Result<String, io::Error> {
+    fs::read_to_string("hello.txt");
+    }
