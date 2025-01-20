@@ -1,7 +1,8 @@
 use std::fs::{self, File};
 use std::io::{self, Read, ErrorKind};
+use std::error::Error;
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     //panic - unrecoverable errors
     //panic!("Crash and burn");
     //println!("Hello, world!");
@@ -55,8 +56,8 @@ fn main() {
 
 
 // ? operator wont work in main function
-let greeting_file = File::open("hello.txt")?
-
+let greeting_file = File::open("hello.txt")?;
+Ok(())
 }
 
 //propagating errors
@@ -94,3 +95,7 @@ fn read_user_from_file_file_shortcut_shorter() -> Result<String, io::Error> {
 fn read_user_from_file_file_shortcut_even_shorter() -> Result<String, io::Error> {
     fs::read_to_string("hello.txt")
     }
+
+fn last_char_of_first_line(text: &str) -> Option<char> {
+    text.lines().next()?.chars().last()
+}
