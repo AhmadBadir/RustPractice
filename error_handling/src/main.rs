@@ -1,4 +1,4 @@
-use std::fs::File;
+use std::fs::{self, File};
 use std::io::{self, Read, ErrorKind};
 
 fn main() {
@@ -51,9 +51,11 @@ fn main() {
 
     //short cut for panic on error
     //let greeting_file = File::open("hello.txt").unwrap();
-    let greeting_file = File::open("hello.txt").expect("hello.txt should be included in this project");
+   // let greeting_file = File::open("hello.txt").expect("hello.txt should be included in this project");
 
 
+// ? operator wont work in main function
+let greeting_file = File::open("hello.txt")?
 
 }
 
@@ -75,20 +77,20 @@ fn read_username_from_file() -> Result<String, io::Error> {
     }
 
 //propagating shortcut
-fn read_user_from_file_file_shortcut -> Result<String, io::Error> {
+fn read_user_from_file_file_shortcut() -> Result<String, io::Error> {
     let mut username_file = File::open("hello.txt")?;
     let mut user = String::new();
-    username_file.read_to_string(&mut username)?;
-    Ok(username);
+    username_file.read_to_string(&mut user)?;
+    Ok(user)
     }
 //propagating shortcut- shorter version
-fn read_user_from_file_file_shortcut_shorter -> Result<String, io::Error> {
+fn read_user_from_file_file_shortcut_shorter() -> Result<String, io::Error> {
     let mut username = String::new();
     File::open("hello.txt")?.read_to_string(&mut username)?;
-    Ok(username);
+    Ok(username)
     }
 
 //propagating shortcut- even shorter version
-fn read_user_from_file_file_shortcut_even_shorter -> Result<String, io::Error> {
-    fs::read_to_string("hello.txt");
+fn read_user_from_file_file_shortcut_even_shorter() -> Result<String, io::Error> {
+    fs::read_to_string("hello.txt")
     }
