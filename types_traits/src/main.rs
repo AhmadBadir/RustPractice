@@ -47,6 +47,19 @@ let flot = Point{x: 1.0, y: 4.0};
 let mix = Point2{x:4, y: 5.0};
 let mix2 = Point2{x:4, y: 5};
 let mix3 = Point2{x:4.0, y: 5.0};
+
+let p = Point{x: 5, y: 10};
+println!("p.x = {}", p.x());
+
+
+let p = Point{x: 5.7, y: 10.0};
+println!("p.x = {}", p.distance_from_origin());
+
+let p1 = Point4{x:5, y:10.0};
+let p2 = Point4{x:"Hello", y:'c'};
+let p3 = p1.mixup(p2);
+
+println!("p3.x = {}, p3.y {}", p3.x, p3.y);
 }
 
 fn largest_i32(list: &[i32]) -> &i32 {
@@ -90,10 +103,48 @@ struct Point<T> {
     y: T,
     }
 
+// generic type in implementation
+impl<T> Point<T> {
+    fn x(&self) -> &T {
+        &self.x
+        }
+    }
+
+//implementation that applied only for specific type although struct is generic
+// generic type in implementation
+impl Point<f32> {
+    fn distance_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+        }
+    }
+
 
 struct Point2<T, U> {
     x: T,
     y: U,
     }
+//generic type using enum
+enum Option<T> {
+    Some(T),
+    None,
+    }
+//enum with multiple generic types
+enum Option1<T, E> {
+    Ok(T),
+    Err(E),
+    }
 
+//Method using generic types different from its stuct definition
+struct Point4<X1, Y1> {
+    x:X1,
+    y:Y1,
+    }
 
+impl<X1, Y1> Point4<X1, Y1> {
+    fn mixup<X2, Y2>(self, other: Point4<X2, Y2>) -> Point4<X1, Y2> {
+        Point4 {
+            x: self.x,
+            y: other.y,
+            }
+        }
+    }
