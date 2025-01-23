@@ -60,7 +60,26 @@ let p2 = Point4{x:"Hello", y:'c'};
 let p3 = p1.mixup(p2);
 
 println!("p3.x = {}, p3.y {}", p3.x, p3.y);
+
+//monomorphized
+let integer = Some(5);
+let float = Some(5.0);
+//compiler will monomorphized the above code to
+let integer = Option_i32::Some(5);
+let float = Option_f64::Some(5.0);
+
+
 }
+//compiler perform monomorphized
+enum Option_i32 {
+    Some(i32),
+    None,
+    }
+enum Option_f64 {
+    Some(f64),
+    None,
+
+    }
 
 fn largest_i32(list: &[i32]) -> &i32 {
     let mut largest = &list[0];
