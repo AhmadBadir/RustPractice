@@ -1,3 +1,4 @@
+use aggregator::{Summary, Tweet};
 fn main() {
 //     let number_list = vec![43, 50, 25, 100, 65];
 //
@@ -69,6 +70,15 @@ let integer = Option_i32::Some(5);
 let float = Option_f64::Some(5.0);
 
 
+//traits
+
+let tweet = Tweet {
+    username: String::from("horse_ebooks"),
+    content: String::from("of course, as you probably already know, people"),
+    reply: false,
+    retweet: false,
+    };
+    println!("1 new tweet:{}", tweet.summarize());
 }
 //compiler perform monomorphized
 enum Option_i32 {
