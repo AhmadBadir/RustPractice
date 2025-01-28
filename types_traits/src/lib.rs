@@ -3,7 +3,7 @@ pub trait Summary {
 
     fn summarize(&self) -> String {
           //default implementation
-      String::from("(Read more...)")
+      format!("(read more from {}...)", self.summarize_author())
         }
 
     }
