@@ -1,4 +1,4 @@
-use aggregator::{Summary, Tweet};
+use aggregator::{Summary, Tweet, NewsArticle};
 fn main() {
 //     let number_list = vec![43, 50, 25, 100, 65];
 //
@@ -79,6 +79,17 @@ let tweet = Tweet {
     retweet: false,
     };
     println!("1 new tweet:{}", tweet.summarize());
+
+
+//Trait with default implementation
+let article = NewsArticle {
+    headline: String::from("Penguis win the Stanley Cup Chammpionship!"),
+    location: String::from("Pittsburgh, PA, USA"),
+    author: String::from("Iceburgh"),
+    content: String::from(" The pittsburge Penguins once again are the best hockey team in the NHL."),
+    };
+
+    println!("New article available! {}", article.summarize());
 }
 //compiler perform monomorphized
 enum Option_i32 {
